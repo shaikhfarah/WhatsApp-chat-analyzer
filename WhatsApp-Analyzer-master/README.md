@@ -7,6 +7,7 @@ firstly need to install same module
 ## How to run code
 - python whatsapp_analyzer.py chat_example.txt --stopword english
   write on terminal
+  chat_example.txt write yours file name
 ##### Supported Analysis
 ----------------------
 -total Chat Count
