@@ -5,7 +5,7 @@ firstly need to install same module
 - pip install emoji
 - pip install dateutil
 ## How to run code
-- python whatsapp_analyzer.py WhatsApp Chat .txt --stopword english
+- python whatsapp_analyzer.py WhatsApp_Chat.txt --stopword english
   write on terminal
   chat_example.txt write yours file name
 ##### Supported Analysis
