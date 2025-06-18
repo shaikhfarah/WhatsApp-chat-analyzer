@@ -1,2 +1,7 @@
 python-dateutil
 emoji>=1.7.0
+streamlit
+pandas
+matplotlib
+seaborn
+textblob
