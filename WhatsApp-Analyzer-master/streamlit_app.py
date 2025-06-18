@@ -8,6 +8,7 @@ from collections import Counter
 from chatline import Chatline
 from font_color import Color
 from textblob import TextBlob
+import os
 
 st.set_page_config(page_title="📱 WhatsApp Chat Analyzer", layout="wide")
 st.title("📊 WhatsApp Chat Analyzer")
@@ -27,13 +28,14 @@ if uploaded_file is not None:
     data = uploaded_file.read().decode("utf-8")
     lines = data.splitlines()
 
-    # Load stop words
+    # Load stop words from stop-words folder
     stop_words = []
-    try:
-        with open("stop-words/" + stopword_lang + ".txt", "r", encoding="utf-8") as f:
-            stop_words = [x.strip() for x in f.readlines()]
-    except:
-        st.warning("Stop word file not found. Proceeding without it.")
+    stop_words_file = f"stop-words/{stopword_lang}.txt"
+    if os.path.exists(stop_words_file):
+        with open(stop_words_file, "r", encoding="utf-8") as f:
+            stop_words = [line.strip() for line in f if line.strip()]
+    else:
+        st.warning(f"⚠️ Stopword file '{stopword_lang}.txt' not found in 'stop-words/' folder. Proceeding without stopwords.")
 
     # Initialize chat counter
     chat_counter = {
@@ -158,7 +160,9 @@ if uploaded_file is not None:
     sns.histplot(sentiment_df, x='Sentiment', bins=20, kde=True, ax=ax)
     st.pyplot(fig)
 
-    
+    st.header("📆 Most Active Days")
+    day_counts = heat_df['Weekday'].value_counts().reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
+    st.bar_chart(day_counts)
 
     st.header("⏰ Most Active Hours")
     hour_counts = heat_df['Hour'].value_counts().sort_index()
