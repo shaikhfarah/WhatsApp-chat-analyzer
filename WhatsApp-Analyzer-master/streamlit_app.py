@@ -17,7 +17,7 @@ uploaded_file = st.file_uploader("Upload your WhatsApp chat .txt file", type=["t
 
 stop_words_options = [
     "arabic", "bulgarian", "catalan", "czech", "danish", "dutch", "english", "finnish",
-    "french", "german", "hebrew", "hindi", "hungarian", "indonesian", "italian", "malaysian",
+    "french", "german", "hebrew", "hindi", "hinglish","hungarian", "indonesian", "italian", "malaysian",
     "norwegian", "polish", "portuguese", "romanian", "russian", "slovak", "spanish", "swedish",
     "turkish", "ukrainian", "vietnamese"
 ]
